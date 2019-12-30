@@ -1,22 +1,27 @@
-import { Controller, Get, Post, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
 
   @Post()
-  create(): string {
-    return 'This action adds a new cat';
+  createCat(): string {
+    return `This action adds a new cat`;
   }
 
   @Get()
-  findAll(): string {
-    return 'This action returns all cats';
+  getAllCats(): string {
+    return `This action returns all cats`;
   }
-  
-    /*
-    @Get(':id')
-    findOne(@Param() params): string {
-      console.log(params.id);
-      return `This action returns a #${params.id} cat`;
-    }*/
+
+  @Put(':id')
+  modifyCat(@Param('id') catId: string): string {
+    return `This action modifies a cat with id = ${catId}`
+
+  }
+
+  @Delete(':id')
+  deleteCat(@Param('id') catId: string): string {
+    return `This action deletes a cat with id = ${catId}`
+  }
+
 }
