@@ -1,3 +1,4 @@
+
 {
     "type": "mysql",
     "host": "localhost",
@@ -8,3 +9,4 @@
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "synchronize": true
   } 
+
