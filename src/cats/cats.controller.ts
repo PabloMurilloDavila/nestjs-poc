@@ -8,28 +8,27 @@ export class CatsController {
   constructor(private readonly catService: CatsService) { }
 
   @Get()
-  getAllCats(): string {
+  getallCats() {
     return this.catService.findAllCats();
   }
 
   @Get(':id')
-  getCat(@Param('id') catId: string): string {
+  getCat(@Param('id') catId: string) {
     return this.catService.findCat(catId);
   }
 
   @Post()
-  createCat(@Body() catDto: CreateCatDto): string {
+  createCat(@Body() catDto: CreateCatDto)  {
     return this.catService.createCat(catDto);
   }
 
-  @Put(':id')
-  modifyCat(@Param('id') catId: string, @Body() catDto: CreateCatDto): string {
-    return this.catService.modifyCat(catId, catDto);
-
+  @Put()
+  modify(@Body() catDto: CreateCatDto)  {
+    return this.catService.modifyCat(catDto);
   }
 
   @Delete(':id')
-  deleteCat(@Param('id') catId: string): string {
+  deleteCat(@Param('id') catId: string)  {
     return this.catService.deleteCat(catId);
   }
 
