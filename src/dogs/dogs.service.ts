@@ -1,38 +1,29 @@
 import { Injectable, HttpService } from '@nestjs/common';
-import { map } from 'rxjs/operators';
+import Axios, { AxiosResponse } from 'axios';
 
 @Injectable()
 export class DogsService {
   constructor(private readonly httpService: HttpService) { }
 
   allBreeds() {
-    return this.httpService.get('https://dog.ceo/api/breeds/list/all').pipe(
-      map(response => response.data)
-    );
+    return Axios.get('https://dog.ceo/api/breeds/list/all').then(response => response.data);
   }
 
   subBreedList(breed: string) {
-    return this.httpService.get('https://dog.ceo/api/breed/' + breed + '/list').pipe(
-      map(response => response.data)
-    );
+    return Axios.get('https://dog.ceo/api/breed/' + breed + '/list').then(response => response.data);
   }
 
   randomImage() {
-    return this.httpService.get('https://dog.ceo/api/breeds/image/random').pipe(
-      map(response => response.data)
-    );
+    return Axios.get('https://dog.ceo/api/breeds/image/random').then(response => response.data);
   }
 
   randomBreedImage(breed: string) {
-    return this.httpService.get('https://dog.ceo/api/breed/' + breed + '/images/random').pipe(
-      map(response => response.data)
-    );
+    return Axios.get('https://dog.ceo/api/breed/' + breed + '/images/random').then(response => response.data);
   }
 
   breedImages(breed: string) {
-    return this.httpService.get('https://dog.ceo/api/breed/' + breed + '/images').pipe(
-      map(response => response.data)
-    );
+    return Axios.get('https://dog.ceo/api/breed/' + breed + '/images').then(response => response.data);
+
   }
 
 }
