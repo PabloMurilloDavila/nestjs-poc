@@ -7,10 +7,12 @@ import { CatsModule } from './cats/cats.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { Cat } from './cats/cat.entity'
+import { DogsModule } from './dogs/dogs.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     CatsModule,
+    DogsModule,
   ],
   controllers: [AppController, CatsController],
   providers: [AppService, CatsService],
