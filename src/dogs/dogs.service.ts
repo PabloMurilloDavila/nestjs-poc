@@ -1,9 +1,8 @@
-import { Injectable, HttpService } from '@nestjs/common';
-import Axios, { AxiosResponse } from 'axios';
+import  {Injectable}  from '@nestjs/common';
+import Axios from 'axios';
 
 @Injectable()
 export class DogsService {
-  constructor(private readonly httpService: HttpService) { }
 
   allBreeds() {
     return Axios.get('https://dog.ceo/api/breeds/list/all').then(response => response.data);
@@ -23,7 +22,6 @@ export class DogsService {
 
   breedImages(breed: string) {
     return Axios.get('https://dog.ceo/api/breed/' + breed + '/images').then(response => response.data);
-
   }
 
 }
