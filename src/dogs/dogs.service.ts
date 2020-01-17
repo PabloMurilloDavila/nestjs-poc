@@ -5,28 +5,28 @@ import Axios from 'axios';
 export class DogsService {
 
   async allBreeds() {
-    const response = await Axios.get('https://dog.ceo/api/breeds/list/all');
-    return response.data;
+    const {data} = await Axios.get('https://dog.ceo/api/breeds/list/all');
+    return data;
   }
 
   async subBreedList(breed: string) {
-    const response = await Axios.get('https://dog.ceo/api/breed/' + breed + '/list');
-    return response.data;
+    const {data} = await Axios.get('https://dog.ceo/api/breed/' + breed + '/list');
+    return data;
   }
 
   async randomImage() {
-    const response = await Axios.get('https://dog.ceo/api/breeds/image/random');
-    return response.data;
+    const {data} = await Axios.get('https://dog.ceo/api/breeds/image/random');
+    return data;
   }
 
   async randomBreedImage(breed: string) {
-    const response = await Axios.get('https://dog.ceo/api/breed/' + breed + '/images/random');
-    return response.data;
+    const {data} = await Axios.get('https://dog.ceo/api/breed/' + breed + '/images/random');
+    return data;
   }
 
   async breedImages(breed: string) {
-    const response = await Axios.get('https://dog.ceo/api/breed/' + breed + '/images');
-    return response.data;
+    const {data} = await Axios.get('https://dog.ceo/api/breed/' + breed + '/images');
+    return data;
   }
 
 }
