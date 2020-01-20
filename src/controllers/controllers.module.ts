@@ -1,15 +1,11 @@
-import { Module, HttpModule  } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { DogsController } from './dogs.controller';
-import {DogsService} from '../services/dogs/dogs.service'
-
+import { DogsModule } from '../core/use_cases/dogs/dogs.module'
 @Module({
-    controllers: [
-        DogsController,
-      ],
-      imports: [HttpModule.register({
-        timeout: 5000,
-        maxRedirects: 5,
-      }),],
-      providers: [DogsService],
+  controllers: [
+    DogsController,
+  ],
+  imports: [DogsModule],
+
 })
-export class ControllersModule {}
+export class ControllersModule { }
