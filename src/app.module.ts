@@ -4,15 +4,12 @@ import { AppService } from './app.service';
 import { CatsController } from './cats/cats.controller';
 import { CatsService } from './cats/cats.service';
 import { CatsModule } from './cats/cats.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
-import { Cat } from './cats/cat.entity'
-import { DogsModule } from './dogs/dogs.module';
+import { ControllersModule } from './controllers/controllers.module';
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
     CatsModule,
-    DogsModule,
+    ControllersModule,
   ],
   controllers: [AppController, CatsController],
   providers: [AppService, CatsService],
