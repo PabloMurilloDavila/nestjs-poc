@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import Axios from 'axios';
+import {BreedListAdapter} from './adapters/breed.list.adapter'
 
 @Injectable()
 export class DogsService {
 
   async allBreeds() {
     const {data} = await Axios.get('https://dog.ceo/api/breeds/list/all');
-    return data;
+    const adapted = BreedListAdapter.toListandNumber(data);
+    // return adapted;
+    return ;
   }
 
   async subBreedList(breed: string) {

@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common';
 export class GetAllBreeds {
   constructor(private readonly dogService: DogsService) { }
 
-  public async call(): Promise<Buffer> {
+  public async call(): Promise<any> {
     return await this.dogService.allBreeds();
   }
 }
