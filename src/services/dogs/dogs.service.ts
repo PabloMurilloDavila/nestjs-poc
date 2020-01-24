@@ -1,35 +1,42 @@
 import { Injectable } from '@nestjs/common';
-import Axios from 'axios';
-import {BreedListAdapter} from './adapters/breed.list.adapter'
+import { BreedListAdapter } from './adapters/breed.list.adapter'
+import { DogsClient } from './client/dogs.client';
+
+export interface allBreedsResult {
+  list: string[],
+  total: number
+}
 
 @Injectable()
 export class DogsService {
 
-  async allBreeds() {
-    const {data} = await Axios.get('https://dog.ceo/api/breeds/list/all');
-    const adapted = BreedListAdapter.toListandNumber(data);
-    // return adapted;
-    return ;
+  endpoint_root: string;
+  client = new (DogsClient);
+
+  async allBreeds(): Promise<allBreedsResult> {
+    const response = await this.client.all_Breeds();
+    const adapted = BreedListAdapter.toListandNumber(response);
+    return adapted;
   }
 
   async subBreedList(breed: string) {
-    const {data} = await Axios.get('https://dog.ceo/api/breed/' + breed + '/list');
-    return data;
+    const response = await this.client.subBreed_List(breed);
+    return response;
   }
 
   async randomImage() {
-    const {data} = await Axios.get('https://dog.ceo/api/breeds/image/random');
-    return data;
+    const response = await this.client.random_Image();
+    return response;
   }
 
   async randomBreedImage(breed: string) {
-    const {data} = await Axios.get('https://dog.ceo/api/breed/' + breed + '/images/random');
-    return data;
+    const response = await this.client.randomBreed_Image(breed);
+    return response;
   }
 
   async breedImages(breed: string) {
-    const {data} = await Axios.get('https://dog.ceo/api/breed/' + breed + '/images');
-    return data;
+    const response = await this.client.breed_Images(breed);
+    return response;
   }
 
 }

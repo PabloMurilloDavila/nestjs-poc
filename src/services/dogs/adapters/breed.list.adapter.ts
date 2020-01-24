@@ -1,16 +1,15 @@
 export class BreedListAdapter {
 
-    public static toListandNumber(response){
-        let breedNamesList = [''];
+    public static toListandNumber(response) {
+        let breedNamesList: string[] = [];
+
         Object.keys(response.message).forEach(key => { breedNamesList.push(key) });
-        
+
         const responseAdapted = {
-            list: breedNamesList, 
+            list: breedNamesList,
             total: breedNamesList.length,
         };
-        console.log(responseAdapted);
 
         return responseAdapted;
     }
 }
-
