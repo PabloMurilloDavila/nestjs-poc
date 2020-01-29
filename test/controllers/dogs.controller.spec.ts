@@ -6,6 +6,7 @@ import { GetRandomBreedImage } from '../../src/core/use_cases/dogs/get.random.br
 import { GetRandomImage } from '../../src/core/use_cases/dogs/get.random.image';
 import { GetSubbreedsList } from '../../src/core/use_cases/dogs/get.subreeds.list';
 import { DogsService } from '../../src/services/dogs/dogs.service';
+import { DogsClient } from '../../src/services/dogs/client/dogs.client';
 
 
 describe('Dogs Controller', () => {
@@ -14,7 +15,7 @@ describe('Dogs Controller', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [DogsController],
-      providers: [DogsService, GetAllBreeds, GetBreedImages, GetRandomBreedImage, GetRandomImage, GetSubbreedsList]
+      providers: [DogsService, GetAllBreeds, GetBreedImages, GetRandomBreedImage, GetRandomImage, GetSubbreedsList, DogsClient]
     }).compile();
 
     controller = module.get<DogsController>(DogsController);

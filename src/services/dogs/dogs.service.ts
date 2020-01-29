@@ -10,8 +10,9 @@ export interface allBreedsResult {
 @Injectable()
 export class DogsService {
 
+  constructor(private readonly client: DogsClient){}
+
   endpoint_root: string;
-  client = new (DogsClient);
 
   async allBreeds(): Promise<allBreedsResult> {
     const response = await this.client.all_Breeds();
