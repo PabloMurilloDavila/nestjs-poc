@@ -10,33 +10,31 @@ export interface allBreedsResult {
 @Injectable()
 export class DogsService {
 
-  constructor(private readonly client: DogsClient){}
-
-  endpoint_root: string;
+  constructor(private readonly client: DogsClient) { }
 
   async allBreeds(): Promise<allBreedsResult> {
-    const response = await this.client.all_Breeds();
+    const response = await this.client.get('/breeds/list/all');
     const adapted = BreedListAdapter.toListandNumber(response);
     return adapted;
   }
 
   async subBreedList(breed: string) {
-    const response = await this.client.subBreed_List(breed);
+    const response = await this.client.get('/breed/' + breed + '/list');
     return response;
   }
 
   async randomImage() {
-    const response = await this.client.random_Image();
+    const response = await this.client.get('/breeds/image/random');
     return response;
   }
 
   async randomBreedImage(breed: string) {
-    const response = await this.client.randomBreed_Image(breed);
+    const response = await this.client.get('/breed/' + breed + '/images/random');
     return response;
   }
 
   async breedImages(breed: string) {
-    const response = await this.client.breed_Images(breed);
+    const response = await this.client.get('/breed/' + breed + '/images');
     return response;
   }
 

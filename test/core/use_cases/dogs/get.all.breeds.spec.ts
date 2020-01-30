@@ -23,7 +23,7 @@ describe('GetAllBreeds', () => {
 
     describe('getAllBreeds - Happy path', () => {
         it('API returns list of breeds', async () => {
-            jest.spyOn(dogsClient, 'all_Breeds').mockImplementation(() => Promise.resolve(API_RESPONSE_ALL_BREEDS));
+            jest.spyOn(dogsClient, 'get').mockImplementation(() => Promise.resolve(API_RESPONSE_ALL_BREEDS));
             expect(await getAllBreeds.call()).toEqual(LIST_OF_ALL_BREEDS);
         });
     });
