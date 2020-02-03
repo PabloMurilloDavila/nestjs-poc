@@ -1,15 +1,13 @@
+import { Dog } from '../../../core/entities/dog';
+
 export class BreedListAdapter {
+  public static toListandNumber(response) {
+    let dogsList: Dog[] = [];
 
-    public static toListandNumber(response) {
-        let breedNamesList: string[] = [];
+    Object.keys(response.message).forEach(key => {
+      dogsList.push(new Dog(key));
+    });
 
-        Object.keys(response.message).forEach(key => { breedNamesList.push(key) });
-
-        const responseAdapted = {
-            list: breedNamesList,
-            total: breedNamesList.length,
-        };
-
-        return responseAdapted;
-    }
+    return dogsList;
+  }
 }

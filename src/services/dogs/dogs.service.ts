@@ -1,18 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { BreedListAdapter } from './adapters/breed.list.adapter'
+import { BreedListAdapter } from './adapters/breed.list.adapter';
 import { DogsClient } from './client/dogs.client';
-
-export interface allBreedsResult {
-  list: string[],
-  total: number
-}
+import { Dog } from '../../core/entities/dog';
 
 @Injectable()
 export class DogsService {
+  constructor(private readonly client: DogsClient) {}
 
-  constructor(private readonly client: DogsClient) { }
-
-  async allBreeds(): Promise<allBreedsResult> {
+  async allBreeds(): Promise<Dog[]> {
     const response = await this.client.get('/breeds/list/all');
     const adapted = BreedListAdapter.toListandNumber(response);
     return adapted;
@@ -37,5 +32,4 @@ export class DogsService {
     const response = await this.client.get('/breed/' + breed + '/images');
     return response;
   }
-
 }
