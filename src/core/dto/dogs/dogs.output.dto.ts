@@ -1,4 +1,4 @@
-import { Dog } from 'src/core/entities/dog';
+import { Dog } from '../../../../src/core/entities/dog';
 
 export class DogsOutputDto {
   list: string[];

@@ -1,6 +1,6 @@
 import { DogsService } from '../../../services/dogs/dogs.service';
 import { Injectable } from '@nestjs/common';
-import { DogsOutputDto, fromDogArray } from 'src/core/dto/dogs/dogs.output.dto';
+import { DogsOutputDto, fromDogArray } from '../../../core/dto/dogs/dogs.output.dto';
 
 @Injectable()
 export class GetAllBreeds {
