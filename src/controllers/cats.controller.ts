@@ -3,7 +3,7 @@ import { GetAllCats } from '../core/use_cases/cats/get.all.cats';
 import { GetCat } from '../core/use_cases/cats/get.cat';
 import { CreateCat } from '../core/use_cases/cats/create.cat';
 import { ModifyCat } from '../core/use_cases/cats/modify.cat';
-import { DeleteCat } from '../core/use_cases/cats/delete.Cat';
+import { DeleteCat } from '../core/use_cases/cats/delete.cat';
 import { CatInputDto } from '../core/dto/cats/cat.input.dto';
 
 @Controller('cats')

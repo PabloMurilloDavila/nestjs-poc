@@ -4,7 +4,7 @@ import { GetAllCats } from './get.all.cats';
 import { GetCat } from './get.cat';
 import { CreateCat } from './create.cat';
 import { ModifyCat } from './modify.cat';
-import { DeleteCat } from './delete.Cat';
+import { DeleteCat } from './delete.cat';
 
 @Module({
   providers: [GetAllCats, GetCat, CreateCat, ModifyCat, DeleteCat],
