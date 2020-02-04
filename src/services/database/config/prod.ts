@@ -2,10 +2,9 @@ import { ConfigService } from '../../../config.service';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const COMMON_CONFIG = {
- entities: [
-    __dirname + '/../../../cats/cat.entity.{ts,js}',
-
-  ], /*
+  entities: [
+    __dirname + '/../../../core/entities/cat.{ts,js}',
+  ] /*
   migrations: [__dirname + '/../migrations/*.{ts,js}'],
   cli: {
     // This param is relative to the directory where the migration
@@ -13,7 +12,7 @@ export const COMMON_CONFIG = {
     // As this allways be from the project src root, we set the
     // relative path from there.
     migrationsDir: 'services/database/migrations',
-  },*/
+  },*/,
 };
 
 export const PRODUCTION_DATABASE_CONFIG: TypeOrmModuleOptions = {
