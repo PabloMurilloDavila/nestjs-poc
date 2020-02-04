@@ -1,41 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Cat } from '../../core/entities/cat';
-
-export interface CatI {
-  id: string;
-  name: string;
-  years: number;
-  bio?: string;
-}
+import { CatsClient } from '../../services/cats/client/cats.client';
+import { CatInputDto } from '../../core/dto/cats/cat.input.dto';
 
 @Injectable()
 export class CatsService {
-  constructor(@InjectRepository(Cat) private catsRepository: Repository<Cat>) {}
+  constructor(private readonly client: CatsClient) {}
 
-  async getAllCats(): Promise<Cat[]> {
-    return await this.catsRepository.find({
-      select: ['id', 'name', 'years'],
-    });
+  async getAllCats() {
+    return this.client.getAllCats();
   }
-
-  async getCat(id: string): Promise<Cat[]> {
-    return await this.catsRepository.find({
-      select: ['id', 'name', 'years'],
-      where: [{ id: id }],
-    });
+  async getCat(id: string) {
+    return this.client.getCat(id);
   }
-
-  async createCat(cat: CatI) {
-    return await this.catsRepository.save(cat);
+  async createCat(cat: CatInputDto) {
+    return this.client.createCat(cat);
   }
-
-  async modifyCat(cat: CatI) {
-    return await this.catsRepository.save(cat);
+  async modifyCat(cat: CatInputDto) {
+    return this.client.modifyCat(cat);
   }
-
   async deleteCat(id: string) {
-    return await this.catsRepository.delete(id);
+    return this.client.deleteCat(id);
   }
 }
