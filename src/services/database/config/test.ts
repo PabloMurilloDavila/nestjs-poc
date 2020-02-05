@@ -4,7 +4,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 export const TEST_DATABASE_CONFIG: TypeOrmModuleOptions = {
   type: 'sqlite',
   database: ':memory:',
-  synchronize: true,
+  synchronize: false,
   keepConnectionAlive: true,
   ...COMMON_CONFIG,
 };

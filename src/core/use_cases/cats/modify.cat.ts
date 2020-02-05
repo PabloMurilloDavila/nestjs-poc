@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CatsService } from '../../../services/cats/cats.service';
-import { CatInputDto } from '../../../core/dto/cats/cat.input.dto';
+import { CatInputDto } from '../../../../src/core/dto/cats/cat.input.dto';
 
 @Injectable()
 export class ModifyCat {
