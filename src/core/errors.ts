@@ -14,7 +14,7 @@ export const DomainErrors = {
     message: 'Invalid cat id provided.',
   },
   INVALID_CAT_BIO: {
-    code: 3001,
+    code: 3002,
     message: 'The bio provided is too short.',
   },
 };
