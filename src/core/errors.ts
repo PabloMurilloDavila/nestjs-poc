@@ -13,6 +13,10 @@ export const DomainErrors = {
     code: 3001,
     message: 'Invalid cat id provided.',
   },
+  INVALID_CAT_BIO: {
+    code: 3001,
+    message: 'The bio provided is too short.',
+  },
 };
 
 export interface IDomainError {

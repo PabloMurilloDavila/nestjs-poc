@@ -1,8 +1,6 @@
 import { Test } from '@nestjs/testing';
-import { GetCat } from '../../../../src/core/use_cases/cats/get.cat';
+import { CreateCat } from '../../../../src/core/use_cases/cats/create.cat';
 import { CatsClient } from '../../../../src/services/cats/client/cats.client';
-import { GET_CAT_RESPONSE } from '../../../services/cats/client/_fixtures_/cat.client';
-import { GET_CAT_RESPONSE_ADAPTED } from './_fixtures_/get.cat';
 import { CatsService } from '../../../../src/services/cats/cats.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cat } from '../../../../src/core/entities/cat';
@@ -10,26 +8,26 @@ import { DatabaseModule } from '../../../../src/services/database/database.modul
 import { DomainError } from '../../../../src/core/errors';
 
 describe('Get Cat tests', () => {
-  let getCat: GetCat;
+  let createCat: CreateCat;
   let catsClient: CatsClient;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       imports: [DatabaseModule, TypeOrmModule.forFeature([Cat])],
-      providers: [CatsService, GetCat, CatsClient],
+      providers: [CatsService, CreateCat, CatsClient],
     }).compile();
     catsClient = module.get<CatsClient>(CatsClient);
-    getCat = module.get<GetCat>(GetCat);
+    createCat = module.get<CreateCat>(CreateCat);
   });
 
-  describe('getCat - Happy path', () => {
-    it('Database response adapted', async () => {
-      jest.spyOn(catsClient, 'getCat').mockImplementation(() => Promise.resolve(GET_CAT_RESPONSE));
-      expect(await getCat.call('1')).toEqual(GET_CAT_RESPONSE_ADAPTED);
+  describe('Create Cat - Happy path', () => {
+    it('Bio lenght ', async () => {
+      const cat = { id: '1', name: 'Gatete', years: 2, bio: '1234' };
+      await expect(createCat.call(cat)).rejects.toThrowError(DomainError);
     });
-    it('Id with more than 3 characters', async () => {
-      const id = '1111';
-      await expect(getCat.call(id)).rejects.toThrowError(DomainError);
+    it('Id length ', async () => {
+      const cat = { id: '1234', name: 'Gatete', years: 2, bio: '122345' };
+      await expect(createCat.call(cat)).rejects.toThrowError(DomainError);
     });
   });
 });
