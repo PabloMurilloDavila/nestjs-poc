@@ -8,15 +8,15 @@ import { CatInputDto } from 'src/core/dto/cats/cat.input.dto';
 export class CatsClient {
   constructor(@InjectRepository(Cat) private catsRepository: Repository<Cat>) {}
 
-  async getAllCats(): Promise<Cat[]> {
+  async getAllCats(): Promise<any> {
     return await this.catsRepository.find({
-      select: ['id', 'name', 'years'],
+      select: ['id', 'name', 'years', 'bio'],
     });
   }
 
-  async getCat(id: string): Promise<Cat[]> {
+  async getCat(id: string): Promise<any> {
     return await this.catsRepository.find({
-      select: ['id', 'name', 'years'],
+      select: ['id', 'name', 'years', 'bio'],
       where: [{ id: id }],
     });
   }
